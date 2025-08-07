@@ -23,6 +23,28 @@ These types holds the memory reference to the actual data. By default, reference
 
 2.  **What is the difference between '==' and '.Equals()'**?
 
+== operator checks reference equality of reference type, where as .Equals() methods checks for the content equlity. But in case of C#, for string, == and .Equals() both compare the value instead of reference. Because String class has operator overloading for == which basically compares the value, and also String class overrides the .Equals() method to compare the value.
+```
+public static void Main(string[] args)
+{
+    string s = new string("sdss");
+    string k = new string("sdss");
+
+    Console.WriteLine(s==k);  // return true because of == operator overloading to compare values
+    Console.WriteLine(s.Equals(k)); // return true because .Equals() is overridden in string to compare value
+
+    object s1 = new string("sdss"); //return false because of object's == operator compare references
+    object k1 = new string("sdss"); // returns true, at runtime both the objects gets converted to string type and .Equals() compares values for string
+
+    Console.WriteLine(s1 == k1);
+    Console.WriteLine(s1.Equals(k1));
+
+
+
+}
+```
+
+
 
 
 
