@@ -1,9 +1,6 @@
 # .NET-Backend-Interview-Questions
-hello. this is normal text
-```
-public static void Main(string[]args){
-  Console.WriteLine("Hello world");
 
-}
+## C# Programming
 
-```
+1. What are value types and reference types in C#?
+
