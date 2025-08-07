@@ -152,6 +152,39 @@ var result = students.ToList(); // Executes SQL: SELECT TOP(2) * FROM Students W
 All operations are translated to SQL and executed in the database.
 Much more efficient for large data sets.
 
+8. **What are extension methods? Give an example.**
 
-   
+Extension methods are used to extend a new functionality to a existing class. If we don't have the access of the source class, and we want to extend a new functionality to the class, we can create a extension method.
+
+```
+public static class ExtensionClass
+{
+    public static string PrintAlternateChars(this string s, bool startWithOdd)
+    {
+        string output = "";
+        if (startWithOdd)
+        {
+            for(int i = 0; i < s.Length; i = i + 2)
+            {
+                output += s[i].ToString();
+            }
+        }
+        else
+        {
+            for (int i = 1; i < s.Length; i = i + 2)
+            {
+                output += s[i].ToString();
+            }
+        }
+        return output;
+    }
+}
+
+public static void Main(string[] args)
+{
+    string s = "Soumyadeep";
+    Console.WriteLine(s.PrintAlternateChars(false));
+
+}
+```
 
