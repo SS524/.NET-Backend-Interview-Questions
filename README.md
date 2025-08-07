@@ -18,7 +18,7 @@ Value types are int, double, float, bool, char. These variables are usually stor
 ```
 By default value types will not have null value.
 
-Reference types are string, class, struct, array
+Reference types are string, class, array
 These types holds the memory reference to the actual data. By default, reference type does not point the object, so it is null. Reference types variable point the data present in the heap. When we assign reference type to a reference type, we assign the address of the value instead of the value it self.
 
 2.  **What is the difference between '==' and '.Equals()'**?
@@ -40,6 +40,24 @@ public static void Main(string[] args)
     Console.WriteLine(s1.Equals(k1));
 
 
+
+}
+```
+
+3. **What is the 'var' keyword used for?**
+
+The var keyword in C# is used to declare an implicitly typed local variable. This means the compiler infers the variable's type from the expression on the right side of the initialization statement, rather than requiring the developer to explicitly state the type. var variable can only be present within a method. Variable with var keyword needs to be initilized.
+
+4. **What is boxing and unboxing?**
+
+Boxing is converting value type to object type, and unboxing is converting object type to value type.
+```
+public static void Main(string[] args)
+{
+    var k = 10;
+    object obj = k; // boxing is implicit
+
+    int k1 = (int)obj; //unboxing requires explicit casting
 
 }
 ```
