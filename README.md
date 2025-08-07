@@ -2,7 +2,8 @@
 
 ## C# Programming
 
-1. What are value types and reference types in C#?
+1. **What are value types and reference types in C#?**
+
 Value types are int, double, float, bool, char. These variables are usually stored in stack. These type of variables hold the exact value. When we assign one value type to a different    value type, then a new copy of the value gets assigned.
 ```
    public static void Main(string[] args)
