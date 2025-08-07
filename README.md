@@ -69,7 +69,50 @@ For value type variables, we don't allow to store null values, for that, nullabl
 int? x = null; // ? is placedafter the value type to denote it as nullable 
 ```
 
+6. **Explain the difference between 'ref', 'out', and 'in' parameters?**
 
+both ref and out keyword helps to return multiple outputs from the method.This is pass by reference.  However there are few differences. if we are passing out keyword as argument, we must modify the variable with out keyword with in the method, else it will throw compile time error. This is option for ref. Similarly before passing any variable with ref keyword as an argument, we must initialize that variable. 
+
+```
+    public static void Main(string[] args)
+    {
+
+
+        int add = 0;
+        int sub = 0;
+        int mult = 0; // For example if we don't assign the mult here, ref will throw compile time error
+        int div = 0;
+
+        processRef(20, 10, ref add, ref sub, ref mult, ref div);
+        processOut(20, 10, out add, out sub, out mult, out div);
+      
+        
+
+        Console.WriteLine($"Sum: {add}");
+        Console.WriteLine($"Sub: {sub}");
+        Console.WriteLine($"Mult: {mult}");
+        Console.WriteLine($"Div: {div}");
+
+     }
+
+public static void processRef(int a, int b, ref int add, ref int sub, ref int mult, ref int div)
+{
+        add = a + b;
+        sub = a - b;
+        mult = a * b;
+        div = a / b;
+
+}
+
+public static void processOut(int a, int b, out int add, out int sub, out int mult, out int div)
+{
+    add = a + b;
+    sub = a - b;
+    mult = a * b;
+    div = a / b; // if we don't modify any of the out variable wihin method, it will throw compile time error
+
+}
+```
 
 
 
