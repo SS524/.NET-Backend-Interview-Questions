@@ -113,7 +113,23 @@ public static void processOut(int a, int b, out int add, out int sub, out int mu
 
 }
 ```
+in keyword is used to restrict the modification of any variable within a method. It makes the variable readonly within the method.
+```
+public static void Main(string[] args)
+{
+    int ro = 9;
+    PrintRo(ro);  
 
+}
+
+
+public static void PrintRo(in int k)
+{
+    // k = k+1   this is not allowed as it is readonly because of in keyword
+    Console.WriteLine($"k is {k}");
+
+}
+```
 
 
 
