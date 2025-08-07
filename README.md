@@ -62,6 +62,13 @@ public static void Main(string[] args)
 }
 ```
 
+5. **What are nullable types in C#?**
+
+For value type variables, we don't allow to store null values, for that, nullable type is present to store null values in the value type variable.
+```
+int? x = null; // ? is placedafter the value type to denote it as nullable 
+```
+
 
 
 
