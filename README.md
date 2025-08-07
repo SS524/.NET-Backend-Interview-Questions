@@ -131,6 +131,26 @@ public static void PrintRo(in int k)
 }
 ```
 
+7. **What is the difference between IEnumerable and IQueryable?**
+
+IEnumerable and IQueryable, both are used to deal with collection of data. IEnumerable is present in System.Collections.Generic namespace, and IQueryable is present in System.Linq namespace. IEnumerable pulls all the data into the memory, and then perform filteration, sorting, quering, etc. Suitable for in memory collection, or if datasize is managable.
+Iqueryable perform quering, filteration, sorting in the external/remote data source it self. Suitable for large dataset, where it can not be loaded into the application memory. Performance is better in IQueryable than IEnumerable.
+```
+IEnumerable<Student> students = dbContext.Students.ToList(); // Executed immediately
+students = students.Where(s => s.Gender == "Male"); // In-memory filtering
+```
+ToList() pulls all records from the database first.
+
+Then Where(...) is applied in-memory.
+Bad for performance when DB is large.
+```
+IQueryable<Student> students = dbContext.Students.Where(s => s.Gender == "Male");
+// Not executed yet
+students = students.Take(2); // Still part of query tree
+var result = students.ToList(); // Executes SQL: SELECT TOP(2) * FROM Students WHERE Gender = 'Male'
+```
+All operations are translated to SQL and executed in the database.
+Much more efficient for large data sets.
 
 
    
