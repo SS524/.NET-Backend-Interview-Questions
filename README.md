@@ -242,8 +242,9 @@ public class Program
 
    <img width="607" height="160" alt="image" src="https://github.com/user-attachments/assets/3ef74771-6eb5-4c70-973e-1cd6ec11f7af" />
 
-   ```
-   public class Program
+
+```
+public class Program
 {
     
     public static void Main(string[] args)
@@ -295,7 +296,6 @@ public class SomeClass
         Console.WriteLine("Huge Task finished");
     }
 }
-
 ```
 
 
