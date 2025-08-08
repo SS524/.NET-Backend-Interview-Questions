@@ -188,3 +188,53 @@ public static void Main(string[] args)
 }
 ```
 
+8. **Delegates, Func, Action, Predicate?**
+
+```
+public class Program
+{
+    public delegate void ProcessInput(int a, int b);
+    public static void Main(string[] args)
+    {
+        ProcessInput processInputDelegate = new ProcessInput(Add);//multicast cast delegate
+        processInputDelegate += Mult;
+
+        processInputDelegate.Invoke(12, 13);
+
+
+        // Action is a built in generic delegate with out any return values
+        Action<string> PrintMessage = (msg) =>
+        {
+            Console.WriteLine(msg);
+        };
+
+        PrintMessage("Hello , everyone");
+
+        // Func is a built in generic delegate with return value. Last type will be the return type.
+        Func<int, int, int> Multiplication = (a, b) => a * b;
+        
+
+        Console.WriteLine($"Multiplication is {Multiplication(23, 43)}");
+
+        // Predicate is a built in generic delegate which return boolean value
+        Predicate<string> CheckConsent = (consent) => consent.ToLower() == "yes";
+        Console.WriteLine(CheckConsent("YES"));
+        
+
+    }
+
+    public static void Add(int a, int b)
+    {
+        Console.WriteLine($"Sum is {a+b}");
+    }
+    public static void Mult(int a, int b)
+    {
+        Console.WriteLine($"Mult is {a*b}");
+
+    }
+
+
+
+}
+```
+
