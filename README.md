@@ -238,3 +238,65 @@ public class Program
 }
 ```
 
+9. **Delegates and Events**
+
+   <img width="607" height="160" alt="image" src="https://github.com/user-attachments/assets/3ef74771-6eb5-4c70-973e-1cd6ec11f7af" />
+
+   ```
+   public class Program
+{
+    
+    public static void Main(string[] args)
+    {
+        SomeClass x = new SomeClass();
+        x.sender += Receiver;
+        x.sender += Receiver1;
+        x.sender += Receiver2;
+
+      
+
+        Thread t1 = new Thread(x.HugeTask);
+        t1.Name = "HugeTaskThread";
+        t1.Start();
+        Console.WriteLine("Program.cs");
+
+        
+
+    }
+
+    static void Receiver(int i)
+    {
+        Console.WriteLine($"rec - {i}");
+    }
+    static void Receiver1(int i)
+    {
+        Console.WriteLine($"rec1 - {i}");
+    }
+    static void Receiver2(int i)
+    {
+        Console.WriteLine($"rec2 - {i}");
+    }
+
+}
+
+public class SomeClass
+{
+
+    public delegate void Sender(int i);
+    public event Sender sender = null;
+    public void HugeTask()
+    {
+
+        for(int i = 0; i < 10; i++)
+        {
+            Thread.Sleep(50);
+            sender(i); //callback
+        }
+        Console.WriteLine("Huge Task finished");
+    }
+}
+
+```
+
+
+ 
